@@ -42,12 +42,15 @@ values."
      javascript
      syntax-checking
      spell-checking
+     c-c++
+     shell
 
      version-control
      eyebrowse
      markdown
      evil-cleverparens
      evil-commentary
+     dockerfile
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -290,6 +293,10 @@ you should place your code here."
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojurescript-mode-hook #'paredit-mode)
 
+  (spacemacs/toggle-evil-cleverparens-on)
+  (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
+
+  (setq js-indent-level 2)
   )
 
 
@@ -302,7 +309,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (string-inflection adjust-parens 4clojure evil-paredit clojure-cheatsheet web-beautify toc-org sql-indent spotify smeargle restclient orgit org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets omnisharp csharp-mode mmm-mode markdown-toc markdown-mode magit-gitflow json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc htmlize helm-spotify multi helm-gitignore request helm-flyspell helm-company helm-c-yasnippet go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck fish-mode eyebrowse evil-magit magit magit-popup git-commit with-editor evil-commentary evil-cleverparens eclim diff-hl company-tern dash-functional tern company-statistics company-quickhelp pos-tip company-go go-mode company-auctex company coffee-mode clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider queue clojure-mode auto-yasnippet yasnippet auto-dictionary auctex ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (powerline projectile iedit hydra spinner highlight anzu smartparens undo-tree helm helm-core async dash s package-build bind-map xterm-color shell-pop multi-term eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format dockerfile-mode string-inflection adjust-parens 4clojure evil-paredit clojure-cheatsheet web-beautify toc-org sql-indent spotify smeargle restclient orgit org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets omnisharp csharp-mode mmm-mode markdown-toc markdown-mode magit-gitflow json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc htmlize helm-spotify multi helm-gitignore request helm-flyspell helm-company helm-c-yasnippet go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck fish-mode eyebrowse evil-magit magit magit-popup git-commit with-editor evil-commentary evil-cleverparens eclim diff-hl company-tern dash-functional tern company-statistics company-quickhelp pos-tip company-go go-mode company-auctex company coffee-mode clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider queue clojure-mode auto-yasnippet yasnippet auto-dictionary auctex ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
