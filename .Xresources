@@ -1,0 +1,86 @@
+! General
+*.scrollBar: false
+*.saveLines: 8192
+*.internalBorder: 0
+*.cursorUnderline: true
+*.cursorBlink: true
+*.dynamicColors:on
+*.letterSpace: 0
+*.geometry: 85x20
+
+! Fonts
+URxvt.font: xft:Source Code Pro:size=10:antialias=true
+URxvt.depth: 32
+URxvt.background: rgba:0000/0000/0200/c800
+
+! Rofi
+rofi.font: Input Mono Light 10
+rofi.terminal: urxvt
+rofi.matching: fuzzy
+
+rofi.width: 60
+rofi.padding: 400
+rofi.lines: 8
+
+rofi.fullscreen: true
+rofi.location: 0
+
+rofi.fixed-num-lines: true
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+rofi.bw: 0
+
+rofi.color-enabled: true
+!                  bg             border        separator
+rofi.color-window: argb:a0282a36, argb:0bc92f8, argb:0272935
+!                  bg            fg       bg-alt        hl-bg    hl-fg
+rofi.color-normal: argb:0282a36, #f8f8f2, argb:0f8f8f2, #ff79c6, #272935
+rofi.color-active: argb:0282a36, #f8f8f2, argb:0f8f8f2, #ff79c6, #272935
+rofi.color-urgent: argb:0282a36, #f8f8f2, argb:0f8f8f2, #ff79c6, #272935
+
+! Rofi keybindings to make it work more vim-like
+rofi.kb-remove-to-eol:               Control+u
+rofi.kb-accept-entry:                Control+m,Return,KP_Enter
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Control+k
+rofi.kb-row-down:                    Down,Control+n,Control+j
+rofi.kb-cancel:                      Escape,Control+g,Control+c,Control+bracketleft
+
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+
+! black
+*.color0:     #000000
+*.color8:     #4D4D4D 
+! red
+*.color1:     #FF5555
+*.color9:     #FF6E67
+! green 
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+! yellow
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+! blue
+*.color4:     #CAA9FA
+*.color12:    #CAA9FA
+! magenta
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+! cyan
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+! white
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+
+! XFT config
+Xft.dpi: 220
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+

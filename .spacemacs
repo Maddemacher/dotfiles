@@ -18,50 +18,53 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     python
      nginx
-     docker
-     ;
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     emacs-lisp
-     ;; git
-     ;; markdown
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
+     (c-c++ :variables c-c++-default-mode-for-headers 'c++-mode c-c++-enable-clang-support t)
+     (shell :variables shell-default-term-shell "/bin/bash")
      auto-completion
-     git
      clojure
-     csharp
-     javascript
-     syntax-checking
-     spell-checking
-     c-c++
-     shell
-
-     lua
-     version-control
-     markdown
+     docker
+     emacs-lisp
+     emoji
      evil-cleverparens
      evil-commentary
+     git
+     go
+     gtags
+     cscope
+     java
+     javascript
+     typescript
+     latex
+     lua
+     markdown
+     org
+     osx
+     python
+     react
+     restclient
+     rust
+     semantic
+     spell-checking
+     sql
+     syntax-checking
+     version-control
+     vimscript
+     yaml
+     ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(
-                                      string-inflection
-                                      adjust-parens
-                                      )
+   dotspacemacs-additional-packages
+   '(
+     editorconfig
+     string-inflection
+     adjust-parens
+     dracula-theme
+     all-the-icons
+     )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -116,20 +119,16 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+   dotspacemacs-themes '(dracula
+                         spacemacs-dark
+                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
-                               :weight normal
+                               :size 28
+                               :weight light
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -155,7 +154,9 @@ values."
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
    ;; with `:' and Emacs commands are executed with `<leader> :'.
-   dotspacemacs-command-key ":"
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
    ;; If non nil `Y' is remapped to `y$'. (default t)
    dotspacemacs-remap-Y-to-y$ t
    ;; Name of the default layout (default "Default")
@@ -165,7 +166,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts 'cache
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -195,7 +196,7 @@ values."
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
    ;; (default 'bottom)
-   dotspacemacs-which-key-position 'bottom
+   dotspacemacs-which-key-position 'right-then-bottom
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
@@ -209,7 +210,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -227,10 +228,10 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -248,10 +249,10 @@ values."
    dotspacemacs-default-package-repository nil
    ;; Delete whitespace while saving buffer. Possible values are `all'
    ;; to aggressively delete empty line and long sequences of whitespace,
-   ;; `trailing' to delete only the whitespace at end of lines, `changed'to
+   ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ))
 
 (defun dotspacemacs/user-init ()
@@ -261,6 +262,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; Avoid having TRAMP hang Spacemacs on startup
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   )
 
 (defun dotspacemacs/user-config ()
@@ -269,38 +273,90 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
+you should place you code here."
 
-  ;; Always show line numbers by default
-  (global-linum-mode t)
+  ;; Make ctrl-w always delete backwards
+  (with-eval-after-load 'company
+    (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
+  (with-eval-after-load 'helm
+    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
 
-  ;; Always use golden ratio
-  (golden-ratio-mode 1)
-
-  ;; Use avy timer instead of char word
-  (spacemacs/set-leader-keys "SPC" 'avy-goto-char-timer)
+  ;; Evil configuration
+  (setq evil-move-cursor-back nil)
+  (setq evil-escape-key-sequence "kj")
 
   ;; Follow symlinks
   (setq vc-follow-symlinks t)
 
   ;; Look like nerdtree please
-  (setq neo-theme 'nerd)
-
-  ;; Delete whitespace on save
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq neo-theme (if (display-graphic-p) 'icons 'nerd))
 
   ;; Allow instant preview of pdfs when editing latex
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
-  (add-hook 'clojure-mode-hook #'paredit-mode)
-  (add-hook 'clojurescript-mode-hook #'paredit-mode)
+  ;; Use adjust parens mode in emacs and clojure
+  (require 'adjust-parens)
+  (add-hook 'emacs-lisp-mode-hook #'adjust-parens-mode)
+  (add-hook 'clojure-mode-hook #'adjust-parens-mode)
 
+  ;; Enable cleverparens in clojure
   (spacemacs/toggle-evil-cleverparens-on)
   (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
 
-  (setq js-indent-level 2)
-  )
+  ;; Enable racer for rust
+  (setq-default rust-enable-racer t)
+  (setq racer-cmd "~/.cargo/bin/racer")
+  (setq racer-rust-src-path "~/dotfiles/dependencies/rust/src")
 
+  ;; Eclim configuration for Java layer
+  (setq eclim-eclipse-dirs "/Applications/Eclipse.app/Contents/Eclipse")
+  (setq eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
+
+  ;; Placement for all my repositories
+  (setq magit-repository-directories '("~/repos/" "~/workspace/"))
+
+  ;; Use 2 spaces for indent when editing any js file
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   js-indent-level 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+
+  ;; Always enable editorconfig
+  (editorconfig-mode t)
+
+  ;; Align things in javascript more nicely
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+
+  ;; Set the ycmd server command to use. It must be build with python3:
+  ;; python3 build.py --clang-completer
+  (setq ycmd-server-command
+        (list "python3"
+              (file-truename "~/dotfiles/dependencies/ycmd/ycmd" )))
+  (setq ycmd-force-semantic-completion t)
+
+  ;; Hack till new emacs version is released
+  (setq python-shell-prompt-detect-failure-warning nil)
+
+  ;; Automatically load any extra ycm files (useful since I generate with ycmd-generator)
+  (setq ycmd-extra-conf-handler 'load)
+
+  ;; These might speed up projectile for larger projects by using the standard shell and caching
+  (setq shell-file-name "/bin/sh")
+  (setq projectile-enable-caching t)
+
+  ;; Use a simple bar as separator instead
+  (setq powerline-default-separator 'bar)
+
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -311,11 +367,10 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (docker tablist docker-tramp yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic nginx-mode lua-mode org livid-mode skewer-mode simple-httpd git-link flyspell-correct-helm flyspell-correct eshell-z clojure-snippets seq powerline projectile iedit hydra spinner highlight anzu smartparens undo-tree helm helm-core async dash s package-build bind-map xterm-color shell-pop multi-term eshell-prompt-extras esh-help disaster company-c-headers cmake-mode clang-format dockerfile-mode string-inflection adjust-parens 4clojure evil-paredit clojure-cheatsheet web-beautify toc-org sql-indent spotify smeargle restclient orgit org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets omnisharp csharp-mode mmm-mode markdown-toc markdown-mode magit-gitflow json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc htmlize helm-spotify multi helm-gitignore request helm-flyspell helm-company helm-c-yasnippet go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck fish-mode eyebrowse evil-magit magit magit-popup git-commit with-editor evil-commentary evil-cleverparens eclim diff-hl company-tern dash-functional tern company-statistics company-quickhelp pos-tip company-go go-mode company-auctex company coffee-mode clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider queue clojure-mode auto-yasnippet yasnippet auto-dictionary auctex ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (powerline org alert log4e gntp skewer-mode simple-httpd parent-mode xcscope haml-mode gitignore-mode fringe-helper git-gutter+ flyspell-correct pos-tip flx anzu evil goto-chg undo-tree json-snatcher json-reformat web-completion-data dash-functional hydra inflections edn multiple-cursors paredit peg eval-sexp-fu seq spinner epl rust-mode bind-map packed anaconda-mode pythonic f s dash avy async auto-complete popup package-build nginx-mode eclim go-mode company js2-mode iedit deferred which-key use-package tide string-inflection spacemacs-theme pug-mode org-plus-contrib link-hint git-gutter-fringe eyebrowse evil-mc dumb-jump docker bind-key all-the-icons cider clojure-mode auctex tern smartparens highlight ycmd flycheck request helm helm-core yasnippet markdown-mode projectile magit magit-popup git-commit yapfify yaml-mode xterm-color ws-butler with-editor window-numbering web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen typescript-mode toml-mode toc-org tagedit tablist stickyfunc-enhance srefactor sql-indent spaceline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restclient restart-emacs request-deferred rainbow-delimiters racer queue quelpa pyvenv pytest pyenv-mode py-isort popwin pkg-info pip-requirements persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file ob-http neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative less-css-mode launchctl json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter gh-md ggtags font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dracula-theme dockerfile-mode docker-tramp disaster diminish diff-hl dactyl-mode cython-mode company-ycmd company-web company-tern company-statistics company-go company-emoji company-emacs-eclim company-c-headers company-auctex company-anaconda column-enforce-mode coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adjust-parens adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ )

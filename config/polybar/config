@@ -1,0 +1,192 @@
+[colors]
+background_alt = #00000000
+background = #282A36
+foreground = #F8F8F2
+black = #000000
+white = #BFBFBF
+transparent = #00ffffff
+red = #FF5555
+green = #50FA7B
+blue = #CAA9FA
+purple = #FF79C6
+orange = #8BE9FD
+yellow = #F1FA8C
+
+[bar/master]
+monitor=eDP1
+width = 100%
+height = 45
+lineheight = 3
+separator = " "
+background = ${colors.background}
+foreground = ${colors.foreground}
+underline-size = 5
+overline-size = 5
+font-0 = Hack:size=18
+font-1 = FontAwesome:size=18
+
+[bar/top]
+inherit = bar/master
+modules-left = cpu ram 
+modules-center = music workspaces
+modules-right = volume wifi battery time
+
+[module/network]
+type = internal/network
+interface = wlp2s0
+ping-interval = 3
+
+format-connected-padding = 1
+label-connected-padding-left = 1
+
+accumulate-stats = true
+
+[module/volume]
+type = internal/volume
+format-volume = <label-volume> <ramp-volume>
+format-volume-foreground = ${colors.green}
+format-volume-underline = ${colors.green}
+
+label-muted =  muted
+label-muted-foreground = #66
+format-muted-underline = ${colors.red}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+[module/wifi]
+inherit = module/network
+
+format-connected-foreground = ${colors.green}
+format-connected-underline = ${colors.green}
+
+label-connected = %essid%  %downspeed% %upspeed%
+label-connected-padding-left = 0
+
+format-disconnected-padding = 1
+format-disconnected-underline = ${colors.yellow}
+format-disconnected-foreground = ${colors.yellow}
+
+label-disconnected = No interwebs! 
+
+[module/cpu]
+type = internal/cpu
+interval = 5
+
+format-prefix = CPU: 
+format-prefix-foreground = ${colors.green}
+format-underline = ${colors.green}
+format-padding = 1
+
+label = %{A:urxvt -e htop &:}%percentage:2%%%{A}
+label-padding-left = 1
+
+[module/ram]
+type = internal/memory
+interval = 3
+
+format-prefix = 
+format-prefix-foreground = ${colors.blue}
+format-underline = ${colors.blue}
+format-padding = 1
+
+label = %{A:urxvt -e htop &:}%percentage_used:2%%%{A}
+label-padding-left = 1
+
+[module/battery]
+type = internal/battery
+full-at = 98
+battery = BAT0
+adapter = ADP1
+
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-charging-padding = 1
+format-charging-underline = ${colors.green}
+format-charging-foreground = ${colors.green}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-full-underline = ${colors.green}
+format-full-padding = 1
+
+label-charging = %{F#31a354}%percentage:2%%%{F-}
+label-discharging = %percentage:2%% 
+label-full = %{F#50FA7B}%{F-} %percentage%% %{F#F1FA8C}%{F-}
+
+ramp-capacity-0 = %{F#FF5555 u#FF5555 +u} %{F-}
+ramp-capacity-1 = %{F#FF5555 u#FF5555 +u} %{F-}
+ramp-capacity-2 = %{F#F1FA8C u#F1FA8C +u} %{F-}
+ramp-capacity-3 = %{F#F1FA8C u#F1FA8C +u} %{F-}
+ramp-capacity-4 = %{F#50FA7B u#50FA7B +u} %{F-}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+[module/workspaces]
+type = internal/i3
+enable-click = true
+enable-scroll = false
+strip-wsnumbers = true
+label-mode-padding = 1
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 10;
+
+ws-icon-default = 
+
+label-focused-underline = ${colors.blue}
+label-focused-padding = 2
+
+label-unfocused-padding = 2
+
+label-visible-padding = 2
+
+label-urgent-padding = 2
+label-urgent-underline = ${colors.red}
+
+[module/time]
+type = internal/date
+interval = 60
+
+format-padding = 1
+format-prefix = 
+format-prefix-foreground = ${colors.purple}
+format-underline = ${colors.purple}
+
+date = "%H:%M"
+time-alt = "%H:%M:%S"
+label-padding-left = 1
+
+[module/music]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+interval = 1
+
+format-online = <label-song> <label-time>
+
+label-song = %{F#50FA7B} %title%%{F-} from %album% by %artist%
+label-time = %elapsed% / %total%
+
+icon-play = ⏵
+icon-pause = ⏸
+icon-stop = ⏹
+icon-prev = ⏮
+icon-next = ⏭
+
+bar-progress-width = 45
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
