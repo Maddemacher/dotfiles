@@ -102,8 +102,10 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -171,10 +173,7 @@ exec --no-startup-id compton --config /home/emil/.config/compton/config
 exec --no-startup-id polybar -r top
 
 # Use both shifts pressed simultaneously to switch keyboard layout
-exec_always setxkbmap -layout us,se -option grp:shifts_toggle
-# Make Caps Lock a Alt key
-exec_always setxkbmap -option alt:nocaps
-
+exec setxkbmap -layout us,se -option grp:shifts_toggle
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
@@ -186,7 +185,6 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
