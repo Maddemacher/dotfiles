@@ -188,3 +188,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Screen shot
+bindsym Print exec scrot $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Print exec scrot -u $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+Print exec scrot -s $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
