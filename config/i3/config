@@ -143,7 +143,7 @@ smart_borders no_gaps
 # Power control mode
 set $power_control "[l]ock log[o]ut [s]uspend [h]ibernate [r]eboot [p]oweroff"
 mode $power_control {
-      bindsym l exec bash ~/dotfiles/zsh/scripts/lock.sh; mode "default"
+      bindsym l exec gnome-screensaver-command -l #bash ~/dotfiles/zsh/scripts/lock.sh; mode "default"
       bindsym o exec i3-msg exit; mode "default"
       bindsym s exec systemctl suspend; mode "default"
       bindsym h exec systemctl hibernate; mode "default"
