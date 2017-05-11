@@ -47,6 +47,7 @@ values."
      rust
      semantic
      spell-checking
+     shell-scripts
      sql
      syntax-checking
      version-control
@@ -65,6 +66,10 @@ values."
      adjust-parens
      dracula-theme
      all-the-icons
+     rpm-spec-mode
+     (vue-mode :location (recipe
+                          :fetcher github
+                          :repo "codefalling/vue-mode"))
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -291,6 +296,7 @@ you should place you code here."
 
   ;; Look like nerdtree please
   (setq neo-theme (if (display-graphic-p) 'icons 'nerd))
+  (setq neo-autorefresh nil)
 
   ;; Allow instant preview of pdfs when editing latex
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
@@ -303,18 +309,6 @@ you should place you code here."
   ;; Enable cleverparens in clojure
   (spacemacs/toggle-evil-cleverparens-on)
   (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
-
-  ;; Enable racer for rust
-  (setq-default rust-enable-racer t)
-  (setq racer-cmd "~/.cargo/bin/racer")
-  (setq racer-rust-src-path "~/dotfiles/dependencies/rust/src")
-
-  ;; Eclim configuration for Java layer
-  (setq eclim-eclipse-dirs "/Applications/Eclipse.app/Contents/Eclipse")
-  (setq eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
-
-  ;; Placement for all my repositories
-  (setq magit-repository-directories '("~/repos/" "~/workspace/"))
 
   ;; Use 2 spaces for indent when editing any js file
   (setq-default
@@ -337,29 +331,10 @@ you should place you code here."
     (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
-  ;; Set the ycmd server command to use. It must be build with python3:
-  ;; python3 build.py --clang-completer
-  (setq ycmd-server-command
-        (list "python3"
-              (file-truename "~/dotfiles/dependencies/ycmd/ycmd" )))
-  (setq ycmd-force-semantic-completion t)
-
-  ;; Hack till new emacs version is released
-  (setq python-shell-prompt-detect-failure-warning nil)
-
-  ;; Automatically load any extra ycm files (useful since I generate with ycmd-generator)
-  (setq ycmd-extra-conf-handler 'load)
-
-  ;; These might speed up projectile for larger projects by using the standard shell and caching
-  (setq shell-file-name "/bin/sh")
-  (setq projectile-enable-caching t)
-
   ;; Use a simple bar as separator instead
   (setq powerline-default-separator 'bar)
-
   )
 
-;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -375,3 +350,4 @@ you should place you code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
