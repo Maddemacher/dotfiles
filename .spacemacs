@@ -313,8 +313,8 @@ you should place you code here."
   ;; Use 2 spaces for indent when editing any js file
   (setq-default
    ;; js2-mode
-   js2-basic-offset 2
-   js-indent-level 2
+   js2-basic-offset 4
+   js-indent-level 4
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
