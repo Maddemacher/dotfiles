@@ -26,12 +26,13 @@ values."
      clojure
      docker
      emacs-lisp
-     emoji
      evil-cleverparens
      evil-commentary
      git
      go
      gtags
+     helm
+     html
      cscope
      java
      javascript
@@ -39,19 +40,20 @@ values."
      latex
      lua
      markdown
+     nginx
      org
-     osx
      python
      react
      restclient
-     rust
      semantic
      spell-checking
      shell-scripts
      sql
      syntax-checking
+     systemd
      version-control
      vimscript
+     vue
      yaml
      ycmd
      )
@@ -67,9 +69,6 @@ values."
      dracula-theme
      all-the-icons
      rpm-spec-mode
-     (vue-mode :location (recipe
-                          :fetcher github
-                          :repo "codefalling/vue-mode"))
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -93,9 +92,9 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 20
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. (default t)
    dotspacemacs-check-for-update t
@@ -271,6 +270,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Avoid having TRAMP hang Spacemacs on startup
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+  (defun your-layer-name/init-vue-mode ()
+    (use-package vue-mode
+      :config
+      ;; 0, 1, or 2, representing (respectively) none, low, and high coloring
+      (setq mmm-submode-decoration-level 2)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -312,6 +317,11 @@ you should place you code here."
 
   ;; Use 2 spaces for indent when editing any js file
   (setq-default
+   tab-width 4
+
+   ;; c++ mode
+   c-default-style "bsd"
+   c-basic-offset 4
    ;; js2-mode
    js2-basic-offset 4
    js-indent-level 4
@@ -321,6 +331,7 @@ you should place you code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+
 
   ;; Always enable editorconfig
   (editorconfig-mode t)
