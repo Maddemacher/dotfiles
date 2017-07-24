@@ -13,7 +13,7 @@ orange = #8BE9FD
 yellow = #F1FA8C
 
 [bar/master]
-monitor=eDP1
+monitor=eDP-1
 width = 100%
 height = 45
 lineheight = 3
