@@ -293,8 +293,9 @@ you should place you code here."
   (with-eval-after-load 'helm
     (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
 
-  (define-key clojure-mode-map (kbd "M-L") 'sp-forward-slurp-sexp)
-  (define-key clojure-mode-map (kbd "M-H") 'sp-forward-barf-sexp)
+  ;; Allow ctrl> and ctrl< to slurp and barf
+  (global-set-key (kbd "C->") 'sp-forward-slurp-sexp)
+  (global-set-key (kbd "C-<") 'sp-forward-barf-sexp)
 
   ;; Evil configuration
   (setq evil-move-cursor-back nil)
