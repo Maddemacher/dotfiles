@@ -8,7 +8,7 @@
 *.letterSpace: 0
 *.geometry: 85x20
 
-! Fonts
+! Fonts, fontsizes 4k 10, 1080p 20
 URxvt.font: xft:Source Code Pro:size=10:antialias=true
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0200/c800
@@ -75,7 +75,8 @@ rofi.kb-cancel:                      Escape,Control+g,Control+c,Control+bracketl
 *.color15:    #E6E6E6
 
 ! XFT config
-Xft.dpi: 220
+Xft.dpi: 220 !4k
+! Xft.dpi: 96 !1080p
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull

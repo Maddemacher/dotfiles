@@ -51,6 +51,8 @@ values."
      sql
      syntax-checking
      systemd
+     spotify
+     terraform
      version-control
      vimscript
      vue
@@ -133,7 +135,8 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 28
+                               ;:size 22 ;1080p
+                               :size 28 ;4k
                                :weight light
                                :width normal
                                :powerline-scale 1.1)
@@ -335,7 +338,9 @@ you should place you code here."
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
-   web-mode-attr-indent-offset 2)
+   web-mode-attr-indent-offset 2
+   ;; terraform-mode
+   terraform-indent-level 4)
 
 
   ;; Always enable editorconfig

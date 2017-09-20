@@ -33,7 +33,7 @@ modules-right = volume wifi battery time
 
 [module/network]
 type = internal/network
-interface = wlp2s0
+interface = wlxa0ab1b50bac0
 ping-interval = 3
 
 format-connected-padding = 1
