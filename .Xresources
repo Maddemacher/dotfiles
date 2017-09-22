@@ -75,8 +75,10 @@ rofi.kb-cancel:                      Escape,Control+g,Control+c,Control+bracketl
 *.color15:    #E6E6E6
 
 ! XFT config
-Xft.dpi: 220 !4k
-! Xft.dpi: 96 !1080p
+!4k
+Xft.dpi: 220
+!1080p
+! Xft.dpi: 96
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
