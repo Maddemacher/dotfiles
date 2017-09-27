@@ -166,7 +166,7 @@ exec urxvt
 exec google-chrome
 exec emacs
 exec slack
-exec spotify
+exec spotify --force-device-scale-factor=2
 
 exec --no-startup-id feh --bg-scale /home/emil/.config/wallpaper/wallpaper
 exec --no-startup-id compton --config /home/emil/.config/compton/config

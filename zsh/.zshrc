@@ -24,3 +24,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export GOPATH="/usr/local/lib/go"
 export PATH="/usr/lib/go-1.8/bin/:$PATH"
+export PATH="/home/emil/.cargo/bin:$PATH"
+export MONOREPO="/home/emil/git/edgeware/monorepo"
+
