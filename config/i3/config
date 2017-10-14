@@ -131,14 +131,14 @@ bindsym $mod+w exec rofi -show window
 
 new_window 1pixel
 
-gaps outer 10
+# Gaps
 gaps inner 10
+#gaps outer 10
+smart_borders no_gaps
 
 # Borders
 for_window [class="^.*"] border pixel 1
 
-# Gaps
-smart_borders no_gaps
 
 # Power control mode
 set $power_control "[l]ock log[o]ut [s]uspend [h]ibernate [r]eboot [p]oweroff"
@@ -181,8 +181,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
