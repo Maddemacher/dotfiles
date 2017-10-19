@@ -301,6 +301,11 @@ you should place you code here."
   (global-set-key (kbd "C->") 'sp-forward-slurp-sexp)
   (global-set-key (kbd "C-<") 'sp-forward-barf-sexp)
 
+  ;; Vim inc dec number at point
+  (global-set-key (kbd "C-a") 'evil-numbers/inc-at-pt)
+  (global-set-key (kbd "C-s") 'evil-numbers/dec-at-pt)
+
+
   ;; Evil configuration
   (setq evil-move-cursor-back nil)
   (setq evil-escape-key-sequence "kj")
