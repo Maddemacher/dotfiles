@@ -13,7 +13,7 @@ font pango:Roboto 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -155,19 +155,19 @@ mode $power_control {
 }
 bindsym $mod+Shift+p mode $power_control
 
-assign[class="URvxt"] $workspace1
 assign[class="Emacs"] $workspace2
 assign[class="Google-chrome"] $workspace3
 assign[class="Firefox"] $workspace3
 assign[class="Slack"] $workspace4
 assign[class="Spotify"] $workspace0
 
-exec urxvt
+exec alacritty
 exec google-chrome
 exec emacs
 exec slack
 exec spotify --force-device-scale-factor=2
 
+#exec --no-startup-id variety-slideshow -s 600 --mode=desktop /home/emil/.config/wallpaper/wallpapers
 exec --no-startup-id feh --bg-scale /home/emil/.config/wallpaper/wallpaper
 exec --no-startup-id compton --config /home/emil/.config/compton/config
 exec --no-startup-id polybar -r top
