@@ -97,19 +97,19 @@ render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
+custom_cursor_colors: true
 
 # Colors (Dracula)
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xeaeaea'
+    background: '0x282a36'
+    foreground: '0xf8f8f2'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
+    text: '0xf8f8f2'
+    cursor: '0xf8f8f2'
 
   # Normal colors
   normal:
@@ -132,17 +132,6 @@ colors:
     magenta: '0xff79c6'
     cyan:    '0x8be9fd'
     white:   '0xffffff'
-
-  # Dim colors (Optional)
-  dim:
-    black:   '0x333333'
-    red:     '0xf2777a'
-    green:   '0x99cc99'
-    yellow:  '0xffcc66'
-    blue:    '0x6699cc'
-    magenta: '0xcc99cc'
-    cyan:    '0x66cccc'
-    white:   '0xdddddd'
 
 # Visual Bell
 #
