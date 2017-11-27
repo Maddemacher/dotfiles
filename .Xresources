@@ -14,7 +14,7 @@ URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0200/c800
 
 ! Rofi
-rofi.font: Input Mono Light 10
+rofi.font: Input Mono Light 26
 rofi.terminal: urxvt
 rofi.matching: fuzzy
 
