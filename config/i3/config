@@ -139,7 +139,6 @@ smart_borders no_gaps
 # Borders
 for_window [class="^.*"] border pixel 1
 
-
 # Power control mode
 set $power_control "[l]ock log[o]ut [s]uspend [h]ibernate [r]eboot [p]oweroff"
 mode $power_control {
@@ -155,15 +154,17 @@ mode $power_control {
 }
 bindsym $mod+Shift+p mode $power_control
 
+assign[class="Code"] $workspace2
 assign[class="Emacs"] $workspace2
-assign[class="Google-chrome"] $workspace3
 assign[class="Firefox"] $workspace3
+assign[class="Google-chrome"] $workspace3
 assign[class="Slack"] $workspace4
-assign[class="Spotify"] $workspace0
+assign[class="Spotify"] $workspace10
 
+#exec emacs
 exec alacritty
+exec code
 exec google-chrome
-exec emacs
 exec slack
 exec spotify --force-device-scale-factor=2
 

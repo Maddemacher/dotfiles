@@ -26,7 +26,7 @@
     "eslint.autoFixOnSave": true,    
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
-    "vim.leader": "<space>", 
+    "vim.leader": "<space>",
     "vim.handleKeys": {
         "<C-d>": true,
     },
@@ -70,7 +70,7 @@
                 }
             ]
         },
-        {
+        /*         {
             "berfore": [
                 "<leader>",
                 "0"
@@ -121,7 +121,7 @@
                     "args": []
                 }
             ]
-        },
+        },*/
         {
             "before": [
                 "<leader>",
@@ -639,5 +639,5 @@
     ],
     "vim.easymotion": true,
     "vim.disableExtension": false,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
 }
