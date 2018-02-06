@@ -257,9 +257,10 @@
             "after": [],
             "commands": [
                 {
-                    "command": "workbench.view.explorer",
+                    "command": "workbench.action.toggleSidebarVisibility",
                     "args": []
                 }
+
             ]
         },
         {
@@ -640,4 +641,6 @@
     "vim.easymotion": true,
     "vim.disableExtension": false,
     "python.linting.enabled": false,
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "Dracula",
 }
