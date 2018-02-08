@@ -64,3 +64,9 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
     ssh-add
 fi
+
+# Aliases
+alias spoton="cd ~/git/spoton"
+alias edgeware="cd ~/git/edgeware"
+alias dotfiles="cd ~/git/dotfiles"
+

@@ -1,32 +1,54 @@
 {
-    "editor.fontSize": 13,
+    // Files
     "files.autoSave": "onFocusChange",
+
+    // Auto-close-tag
     "auto-close-tag.activationOnLanguage": [
-        "xml",
-        "php",
         "blade",
+        "cfml",
         "ejs",
-        "jinja",
+        "erb",
         "javascriptreact",
+        "jinja",
+        "lang-cfml",
+        "liquid",
+        "php",
         "typescriptreact",
         "vue",
-        "liquid",
-        "erb",
-        "lang-cfml",
-        "cfml"
+        "xml",
     ],
-    "editor.detectIndentation": true,
-    "explorer.confirmDragAndDrop": false,
+
+    // Git
     "git.enableSmartCommit": true,
-    "editor.minimap.enabled": false,
+
+    // Editor
+    "editor.detectIndentation": true,
     "editor.folding": false,
+    "editor.fontSize": 13,
     "editor.glyphMargin": false,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        80
+    ],
+
+    // Explorer
+    "explorer.confirmDragAndDrop": false,
+
+    // Workbench 
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "Dracula",
+
+    // Vetur
     "vetur.format.defaultFormatter.html": "js-beautify-html",
-    "prettier.eslintIntegration": true,
+    "vetur.format.styleInitialIndent": true,
+
+    // Eslint settings
     "eslint.autoFixOnSave": true,    
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
+
+    // Vim settings
     "vim.leader": "<space>",
+    "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
     "vim.handleKeys": {
         "<C-d>": true,
     },
@@ -70,58 +92,6 @@
                 }
             ]
         },
-        /*         {
-            "berfore": [
-                "<leader>",
-                "0"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.view.explorer",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "1"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.focusFirstEditorGroup",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "2"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.focusSecondEditorGroup",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "3"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.focusThirdEditorGroup",
-                    "args": []
-                }
-            ]
-        },*/
         {
             "before": [
                 "<leader>",
@@ -640,7 +610,4 @@
     ],
     "vim.easymotion": true,
     "vim.disableExtension": false,
-    "python.linting.enabled": false,
-    "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Dracula",
 }

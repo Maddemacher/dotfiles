@@ -16,7 +16,7 @@ font pango:Roboto 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $term 
+bindsym $mod+Return exec $term -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -185,7 +185,7 @@ for_window [instance="mathterminal"] floating enable
 for_window [instance="mathterminal"] resize set 1920 1080 
 for_window [instance="mathterminal"] move scratchpad
 for_window [instance="mathterminal"] border pixel 5 
-exec --no-startup-id $term -t mathterminal 
+exec --no-startup-id $term -t mathterminal -e /usr/bin/R
 bindsym $mod+a [instance="mathterminal"] scratchpad show; move position center; resize set 2716 1524;
 
 # Python terminal
