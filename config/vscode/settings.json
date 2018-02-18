@@ -610,4 +610,6 @@
     ],
     "vim.easymotion": true,
     "vim.disableExtension": false,
+    "editor.renderWhitespace": "none",
+    "window.zoomLevel": 0,
 }

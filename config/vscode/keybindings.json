@@ -29,4 +29,8 @@
         "command": "-workbench.action.terminal.openNativeConsole",
         "when": "!terminalFocus"
     },
+    {
+        "key": "ctrl+f",
+        "command": "filesExplorer.findInFolder"
+    },
 ]
