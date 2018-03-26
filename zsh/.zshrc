@@ -69,4 +69,7 @@ fi
 alias spoton="cd ~/git/spoton"
 alias edgeware="cd ~/git/edgeware"
 alias dotfiles="cd ~/git/dotfiles"
+alias cygni="cd ~/git/cygni"
+alias TT="cd ~/git/tt"
 
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

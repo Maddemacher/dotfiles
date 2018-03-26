@@ -129,15 +129,21 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# screen options
+set $output_control "[l]ock log[o]ut [s]uspend [h]ibernate [r]eboot [p]oweroff"
+mode $output_control {
+}
+bindsym $mod+o mode "output"
+
 bindsym $mod+d exec rofi -show run
 bindsym $mod+w exec rofi -show window
 
 new_window 1pixel
 
 # Gaps
-gaps inner 10
+#gaps inner 10
 #gaps outer 10
-smart_borders no_gaps
+#smart_borders no_gaps
 
 # Borders
 for_window [class="^.*"] border pixel 1

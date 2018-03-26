@@ -34,6 +34,9 @@
     // Explorer
     "explorer.confirmDragAndDrop": false,
 
+    // Problems
+    "problems.decorations.enabled": false,
+
     // Workbench 
     "workbench.activityBar.visible": true,
     "workbench.colorTheme": "Dracula",
@@ -44,6 +47,9 @@
 
     // Eslint settings
     "eslint.autoFixOnSave": true,    
+
+    // Standardjs settings
+    "standard.autoFixOnSave": true,
 
     // Vim settings
     "vim.leader": "<space>",
@@ -611,5 +617,6 @@
     "vim.easymotion": true,
     "vim.disableExtension": false,
     "editor.renderWhitespace": "none",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 0.5,
+    "gitlens.keymap": "alternate",
 }
