@@ -26,12 +26,12 @@
 #define SUPERDUPER_COMBO_COUNT 1
 #define EECONFIG_SUPERDUPER_INDEX (uint8_t *) 19
 
-#define SWEA  UC(0x00E5) // swedish a
-#define CSWEA  UC(0x00D6) // Capital swedish a
-#define SWEAA UC(0x00E4)
-#define CSWEAA  UC(0x00D6) // Capital swedish aa
-#define SWEO  UC(0x00F6)
-#define CSWEO  UC(0x00D6) // Capital swedish o
+#define SWEA  0x00E5 // swedish a
+#define CSWEA  0x00C5 // Capital swedish aa
+#define SWEAA 0x00E4
+#define CSWEAA  0x00C4 // Capital swedish aa
+#define SWEO  0x00F6
+#define CSWEO  0x00D6 // Capital swedish o
 
 // Macro Declarations
 enum {
@@ -63,18 +63,52 @@ void clear_superduper_key_combos(void);
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   switch(id) {
+    case _SWEA: {
+        if (record->event.pressed) {
+	    if (keyboard_report->mods & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+		unicode_input_start();
+      		register_hex(CSWEA);
+      		unicode_input_finish();
+	    } else { 
+		unicode_input_start();
+      		register_hex(SWEA);
+      		unicode_input_finish();
+            }
+        }
+	
+        return false;
+    }
+
+    case _SWEAA: {
+        if (record->event.pressed) {
+	    if (keyboard_report->mods & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+		unicode_input_start();
+      		register_hex(CSWEAA);
+      		unicode_input_finish();
+	    } else { 
+		unicode_input_start();
+      		register_hex(SWEAA);
+      		unicode_input_finish();
+            }
+        }
+	
+        return false;
+    }
 
     case _SWEO: {
         if (record->event.pressed) {
-	    if (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) {
-            	SEND_STRING("HEJ");
-	    }
-	    else {
-            	SEND_STRING("hej");
-	    }
-
-            return false;
+	    if (keyboard_report->mods & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+		unicode_input_start();
+      		register_hex(CSWEO);
+      		unicode_input_finish();
+	    } else { 
+		unicode_input_start();
+      		register_hex(SWEO);
+      		unicode_input_finish();
+            }
         }
+	
+        return false;
     }
   }
 
@@ -264,11 +298,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      | Next | Vol- |        |
+ * |        |      |      |      |      |      |      |           |      |      | PgUp | Prev | Next | Vol- |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        | Alt  |[Super Duper]| Cmd  |      |------|           |------| Left | Down |  Up  | Right| Play |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      | Mute | Vol+ |        |
+ * |        |      |      |      |      |      |      |           |      |      | PgDwn|      | Mute | Vol+ |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -293,9 +327,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                               KC_LSFT, _______, _______,
     // right hand
     _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, KC_PGUP, KC_MNXT, KC_VOLU, _______,
+    _______, _______, KC_PGUP, KC_MPRV, KC_MNXT, KC_VOLU, _______,
              KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_MPLY, KC_MNXT,
-    _______, _______, _______, KC_PGDN, KC_MUTE, KC_VOLD, _______,
+    _______, _______, KC_PGDN, _______, KC_MUTE, KC_VOLD, _______,
                       _______, _______, _______, _______, _______,
 
     _______, _______,
