@@ -617,6 +617,6 @@
     "vim.easymotion": true,
     "vim.disableExtension": false,
     "editor.renderWhitespace": "none",
-    "window.zoomLevel": 0.5,
+    "window.zoomLevel": 0,
     "gitlens.keymap": "alternate",
 }

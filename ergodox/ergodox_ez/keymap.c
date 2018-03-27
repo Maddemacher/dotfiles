@@ -8,23 +8,38 @@
 #define _______ KC_TRNS
 
 // Layers 
-#define RAISE OSL(_RAISE)
-#define LOWER OSL(_LOWER)
-#define SWEDISH OSL(_SWEDISH)
+#define RAISE TO(_RAISE)
+#define LOWER TO(_LOWER)
+#define SWEDISH TG(_SWEDISH)
 
 // Combo keys
-#define ESC_L1  MT(LOWER, KC_ESC)
-#define TAB_L2  MT(RAISE, KC_TAB)
+#define ESC_L1  LT(RAISE, KC_ESC)
+#define TAB_L2  LT(LOWER, KC_TAB)
 
 #define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _SUPERDUPER 3
-#define _SWEDISH 4
+#define _SWEDISH 1
+#define _LOWER 2
+#define _RAISE 3
+#define _SUPERDUPER 4
 
 // Combo : SuperDuper layer from S+D (R+S in Colemak)
 #define SUPERDUPER_COMBO_COUNT 1
 #define EECONFIG_SUPERDUPER_INDEX (uint8_t *) 19
+
+#define SWEA  UC(0x00E5) // swedish a
+#define CSWEA  UC(0x00D6) // Capital swedish a
+#define SWEAA UC(0x00E4)
+#define CSWEAA  UC(0x00D6) // Capital swedish aa
+#define SWEO  UC(0x00F6)
+#define CSWEO  UC(0x00D6) // Capital swedish o
+
+// Macro Declarations
+enum {
+    _SWEO = 0,
+    _SWEA,
+    _SWEAA,
+    // ..., the rest of your macros
+};
 
 enum process_combo_event {
   CB_SUPERDUPER,
@@ -44,6 +59,27 @@ const uint16_t empty_combo[] = {COMBO_END};
 void set_superduper_key_combos(void);
 void clear_superduper_key_combos(void);
 
+// Macro Definitions
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  switch(id) {
+
+    case _SWEO: {
+        if (record->event.pressed) {
+	    if (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) {
+            	SEND_STRING("HEJ");
+	    }
+	    else {
+            	SEND_STRING("hej");
+	    }
+
+            return false;
+        }
+    }
+  }
+
+  return MACRO_NONE;
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -69,37 +105,83 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT_ergodox(
         // left hand
-        SWEDISH,  _______, _______, _______, _______,  _______, _______,
-        TAB_L2,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    _______,
-        ESC_L1,   KC_A,    KC_S,    KC_D,    KC_F,     KC_G,
-        KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    _______,
-        KC_LEFT,  _______, _______, KC_LGUI, KC_RIGHT,
+        SWEDISH,  KC_1,        KC_2,        KC_3,    KC_4,     KC_5, _______,
+        TAB_L2,   KC_Q,        KC_W,        KC_E,    KC_R,     KC_T, _______,
+        ESC_L1,   KC_A,        KC_S,        KC_D,    KC_F,     KC_G,
+        KC_LSFT,  CTL_T(KC_Z), ALT_T(KC_X), KC_C,    KC_V,     KC_B, _______,
+        KC_LEFT,  _______,     _______,     KC_LGUI, KC_RIGHT,
 
                                                                      _______, _______,
                                                                               KC_HOME,
                                                           KC_SPC,    KC_BSPC, KC_END,
 
         // right hand
-        _______,   _______, _______, _______, _______, _______,  _______,
-        _______,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,
-                   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,
-        _______,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSPC,
+        _______,   KC_6,    KC_7,    KC_8,    KC_9,          KC_0,           KC_PEQL,
+        _______,   KC_Y,    KC_U,    KC_I,    KC_O,          KC_P,           KC_BSLASH,
+                   KC_H,    KC_J,    KC_K,    KC_L,    	     KC_SCLN,        KC_QUOT,
+        _______,   KC_N,    KC_M,    KC_COMM, ALT_T(KC_DOT), CTL_T(KC_SLSH), SFT_T(KC_MINS),
         KC_UP,     _______, _______, _______, KC_DOWN,
 
         _______, _______,
         KC_PGDN,
         KC_PGUP, KC_TAB,  KC_ENT
     ),
+
+/* Keymap 2: Swedish layer 
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      | å      |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |------|           |------|      |      |      |      | ö    | ä      |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+
+[_SWEDISH] = LAYOUT_ergodox(
+    // left hand
+    _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,
+
+                                                       _______, _______,
+                                                                _______,
+                                              _______, _______, _______,
+    // right hand
+    _______, _______, _______, _______, _______, _______,  _______,
+    _______, _______, _______, _______, _______, _______,  M(_SWEA),
+             _______, _______, _______, _______, M(_SWEO), M(_SWEAA),
+    _______, _______, _______, _______, _______, _______,  _______,
+                      _______, _______, _______, _______,  _______,
+
+    _______, _______,
+    _______,
+    _______, _______, _______
+),
+
 /* Keymap 1: Raise (symbols)
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  F1  | F2   | F3   | F4   | F5   |      |           |      | F6   | F7   | F8   | F9   | F10  | F11    |
+ * |  F1    | F2   | F3   | F4   | F5   |  F6  |      |           |      | F7   | F8   | F9   | F10  | F11  | F12    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   !  |   @  |  {   |   }  |   |  |      |           |      |      |      |      |      |      | F12    |
+ * |        |   !  |   @  |  {   |   }  |   |  |      |           |      |  &   |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   #  |   $  |   (  |   )  |  `   |------|           |------|  |   |  &   |  ~   |  =   |      |        |
+ * |        |   #  |   $  |   (  |   )  |  `   |------|           |------|  +   |  -   |  *   |  /   |  =   |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   %  |   ^  |   [  |   ]  |  ~   |      |           |      |  ^   |  /   |  *   |  -   | +    |        |
+ * |        |   %  |   ^  |   [  |   ]  |  ~   |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -113,20 +195,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ergodox(
        // left hand
-       _______, _______, _______, _______, _______, _______, _______,
-       KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _______,
-       _______, KC_LALT, KC_GRV,  KC_MINS, KC_LBRC, KC_LPRN,
-       _______, KC_LCTL, KC_TILD, KC_UNDS, KC_LCBR, _______, _______,
+       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    _______,
+       _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,  _______,
+       _______, KC_HASH, KC_DLR,  KC_LSPO, KC_RSPC, KC_GRAVE,
+       _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,  _______,
        _______, _______, _______, _______, _______,
 
                                                                      _______, _______,
                                                                               _______,
-                                                            _______, _______, _______,
+                                                            _______, KC_DEL,  _______,
        // right hand
-       _______, _______, _______, _______, _______, _______, _______,
-       _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
-                KC_RPRN, KC_RBRC, KC_EQL,  KC_BSLS, KC_RALT, _______,
-       _______, _______, KC_RCBR, KC_PLUS, KC_PIPE, KC_RCTL, _______,
+       _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,   KC_F12,
+       _______, KC_AMPR, _______, _______, _______, _______,  _______,
+                KC_PLUS, KC_MINS, KC_ASTR, KC_SLSH, KC_EQUAL, _______,
+       _______, _______, _______, _______, _______, _______,  _______,
                 _______, _______, _______, _______, _______,
 
        _______, _______,
@@ -220,54 +302,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______, _______, _______
 ),
-/* Keymap 4: Swedish layer 
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-[_SUPERDUPER] = LAYOUT_ergodox(
-    // left hand
-    _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______,
-
-                                                       _______, _______,
-                                                                _______,
-                                              _______, _______, _______,
-    // right hand
-    _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,
-             _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______,
-                      _______, _______, _______, _______, _______,
-
-    _______, _______,
-    _______,
-    _______, _______, _______
-),
 };
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-
+    set_unicode_input_mode(UC_LNX);
 };
 
 // Runs constantly in the background, in a loop.
@@ -278,22 +317,30 @@ void matrix_scan_user(void) {
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
+    
     switch (layer) {
-        case _LOWER:
-            // Binary 2 represented by the leds
+	case _QWERTY:
+            // *--
+            ergodox_right_led_1_on();
+	    break;
+	case _SWEDISH:
             // -*-
             ergodox_right_led_2_on();
             break;
         case _RAISE:
-            // Binary 3 represented by the leds
-            // -**
-            ergodox_right_led_3_on();
+            // **-
+            ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
+
+        case _LOWER:
+            // --*
+            ergodox_right_led_3_on();
+            break;
         case _SUPERDUPER:
-            // Binary 4 represented by the leds
-            // *--
+            // *-*
             ergodox_right_led_1_on();
+            ergodox_right_led_3_on();
             break;
         default:
             // none
@@ -323,6 +370,7 @@ void matrix_scan_user(void) {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
+
 void set_superduper_key_combos(void) {
   uint8_t layer = eeprom_read_byte(EECONFIG_SUPERDUPER_INDEX);
 
