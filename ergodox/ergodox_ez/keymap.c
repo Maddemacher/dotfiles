@@ -115,7 +115,42 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
     case SHRUG: {
         if (record->event.pressed) {
-		SEND_STRING("Daniel ar en fjant");
+		// ¯\_(ツ)_/¯
+		unicode_input_start();
+		register_hex(0x00AF);
+		unicode_input_finish();
+
+		unicode_input_start();
+		register_hex(0x005C);
+		unicode_input_finish();
+
+		unicode_input_start();
+		register_hex(0x005F);
+		unicode_input_finish();
+
+		unicode_input_start();
+		register_hex(0x0028);
+		unicode_input_finish();
+
+		unicode_input_start();
+		register_hex(0x30C4);
+		unicode_input_finish();
+
+		unicode_input_start();
+		register_hex(0x0029);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+		register_hex(0x005F);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+		register_hex(0x002F);
+      		unicode_input_finish();
+
+		unicode_input_start();
+		register_hex(0x00AF);
+      		unicode_input_finish();
         }
 	
         return false;
