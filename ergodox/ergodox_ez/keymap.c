@@ -38,6 +38,8 @@ enum {
     _SWEO = 0,
     _SWEA,
     _SWEAA,
+    SHRUG,
+    FLIP
     // ..., the rest of your macros
 };
 
@@ -110,6 +112,71 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 	
         return false;
     }
+
+    case SHRUG: {
+        if (record->event.pressed) {
+		SEND_STRING("Daniel ar en fjant");
+        }
+	
+        return false;
+    }
+
+    case FLIP: {
+	// (╯°□°）╯︵ ┻━┻
+       if (record->event.pressed) {
+	//       0028 256F 00B0 25A1 00B0 FF09 256F FE35 0020 253B 2501 253B
+		unicode_input_start();
+      		register_hex(0x0028);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x256F);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x00B0);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x25A1);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x00B0);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0xFF09);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x256F);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0xFE35);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x0020);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x253B);
+      		unicode_input_finish();
+		
+		unicode_input_start();
+      		register_hex(0x2501);
+      		unicode_input_finish();
+
+		unicode_input_start();
+      		register_hex(0x253B);
+      		unicode_input_finish();
+        }
+	
+        return false;
+    }
+
   }
 
   return MACRO_NONE;
@@ -127,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |Shift   |Z/Ctrl|X/Alt |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |./Alt |/Ctrl | -/Shift|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Left |      |      | Lead | Right|                                       | Up   |      |      |      | Down |
+ *   | Left |      |      | Lead | Right|                                       | Up   | Shrug| Flip |      | Down |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -150,11 +217,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                           KC_SPC,    KC_BSPC, KC_END,
 
         // right hand
-        _______,   KC_6,    KC_7,    KC_8,    KC_9,          KC_0,           KC_PEQL,
-        _______,   KC_Y,    KC_U,    KC_I,    KC_O,          KC_P,           KC_BSLASH,
-                   KC_H,    KC_J,    KC_K,    KC_L,    	     KC_SCLN,        KC_QUOT,
-        _______,   KC_N,    KC_M,    KC_COMM, ALT_T(KC_DOT), CTL_T(KC_SLSH), SFT_T(KC_MINS),
-        KC_UP,     _______, _______, _______, KC_DOWN,
+        _______,   KC_6,     KC_7,    KC_8,    KC_9,          KC_0,           KC_PEQL,
+        _______,   KC_Y,     KC_U,    KC_I,    KC_O,          KC_P,           KC_BSLASH,
+                   KC_H,     KC_J,    KC_K,    KC_L,    	     KC_SCLN,        KC_QUOT,
+        _______,   KC_N,     KC_M,    KC_COMM, ALT_T(KC_DOT), CTL_T(KC_SLSH), SFT_T(KC_MINS),
+        KC_UP,     M(SHRUG), M(FLIP), _______, KC_DOWN,
 
         _______, _______,
         KC_PGDN,
