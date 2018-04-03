@@ -13,7 +13,7 @@ orange = #8BE9FD
 yellow = #F1FA8C
 
 [bar/master]
-monitor=eDP-1
+monitor=${env:MONITOR}
 width = 100%
 height = 45
 lineheight = 3

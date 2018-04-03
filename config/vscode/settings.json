@@ -618,5 +618,15 @@
     "vim.disableExtension": false,
     "editor.renderWhitespace": "none",
     "window.zoomLevel": 0,
-    "gitlens.keymap": "alternate",
+    "gitlens.keymap": "none",
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
 }

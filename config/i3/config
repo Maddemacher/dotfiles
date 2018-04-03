@@ -129,12 +129,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# screen options
-set $output_control "[l]ock log[o]ut [s]uspend [h]ibernate [r]eboot [p]oweroff"
-mode $output_control {
-}
-bindsym $mod+o mode "output"
-
 bindsym $mod+d exec rofi -show run
 bindsym $mod+w exec rofi -show window
 
@@ -162,6 +156,21 @@ mode $power_control {
       bindsym Escape mode "default"
 }
 bindsym $mod+Shift+p mode $power_control
+
+set $screen_control "[s]ame as, [l]eft of, [r]ight of, [o]ff"
+mode $screen_control {
+      bindsym s exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --right-of eDP1
+      bindsym r exec xrandr --output HDMI1 --mode 1920x1080 --scale 2x2  --right-of eDP1
+      bindsym l exec xrandr --output HDMI1 --mode 1920x1080 --scale 2x2  --left-of eDP1
+      bindsym o exec xrandr --output HDMI1 --off
+
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
+bindsym $mod+Shift+s mode $screen_control
+
+bindsym $mod+comma move workspace to output left
+bindsym $mod+period move workspace to output right
 
 assign[class="Code"] $workspace2
 assign[class="Emacs"] $workspace2
@@ -205,7 +214,7 @@ bindsym $mod+p [instance="pythonterminal"] scratchpad show; move position center
 #exec --no-startup-id variety-slideshow -s 600 --mode=desktop /home/emil/.config/wallpaper/wallpapers
 exec --no-startup-id feh --bg-scale /home/emil/.config/wallpaper/wallpaper
 exec --no-startup-id compton --config /home/emil/.config/compton/config
-exec --no-startup-id polybar -r top
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use both shifts pressed simultaneously to switch keyboard layout
 exec setxkbmap -layout us,se -option grp:shifts_toggle
