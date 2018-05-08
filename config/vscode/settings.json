@@ -32,7 +32,14 @@
     ],
 
     // Explorer
-    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDragAndDrop": true,
+    "explorer.openEditors.visible": 0,
+    
+    // Docker
+    "docker.showExplorer": false,
+
+    // Gitlens
+    "gitlens.gitExplorer.enabled": false,
 
     // Problems
     "problems.decorations.enabled": false,

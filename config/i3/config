@@ -157,18 +157,20 @@ mode $power_control {
 }
 bindsym $mod+Shift+p mode $power_control
 
-set $screen_control "[s]ame as, [l]eft of, [r]ight of, [o]ff"
+# Screen control mode 
+set $screen_control "[s]ame as [l]eft of [r]ight of [o]ff"
 mode $screen_control {
-      bindsym s exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --right-of eDP1
-      bindsym r exec xrandr --output HDMI1 --mode 1920x1080 --scale 2x2  --right-of eDP1
-      bindsym l exec xrandr --output HDMI1 --mode 1920x1080 --scale 2x2  --left-of eDP1
-      bindsym o exec xrandr --output HDMI1 --off
+      bindsym s exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --same-as eDP1; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
+      bindsym l exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --left-of eDP1; exec $HOME/.config/polybar/launch.sh; mode "default"
+      bindsym r exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --right-of eDP1; exec $HOME/.config/polybar/launch.sh; mode "default"
+      bindsym o exec xrandr --output HDMI1 --off; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
 
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
 bindsym $mod+Shift+s mode $screen_control
 
+# Workspace control
 bindsym $mod+comma move workspace to output left
 bindsym $mod+period move workspace to output right
 
@@ -213,7 +215,7 @@ bindsym $mod+p [instance="pythonterminal"] scratchpad show; move position center
 
 #exec --no-startup-id variety-slideshow -s 600 --mode=desktop /home/emil/.config/wallpaper/wallpapers
 exec --no-startup-id feh --bg-scale /home/emil/.config/wallpaper/wallpaper
-exec --no-startup-id compton --config /home/emil/.config/compton/config
+#exec --no-startup-id compton --config /home/emil/.config/compton/config
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use both shifts pressed simultaneously to switch keyboard layout
