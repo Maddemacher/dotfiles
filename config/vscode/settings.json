@@ -65,7 +65,7 @@
     "vim.handleKeys": {
         "<C-d>": true,
     },
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindings": [
         {
             "before": [
                 "<leader>",
@@ -623,17 +623,12 @@
     ],
     "vim.easymotion": true,
     "vim.disableExtension": false,
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "window.zoomLevel": 0,
     "gitlens.keymap": "none",
+    "gitlens.historyExplorer.enabled": true,
+    "editor.wordWrapColumn": 120,
     "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
 }

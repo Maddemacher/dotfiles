@@ -73,3 +73,8 @@ alias cygni="cd ~/git/cygni"
 alias TT="cd ~/git/tt"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=${PATH}:$HOME/android-sdk-linux/platform-tools:$HOME/android-sdk-linux/tools:$HOME/android-sdk-linux/build-tools/22.0.1/
+export ANDROID_HOME=$HOME/android-sdk-linux
+export ANDROID_SDK_ROOT=$HOME/android-sdk-linux
+
+eval $(thefuck --alias)

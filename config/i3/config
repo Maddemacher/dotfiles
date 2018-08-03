@@ -160,10 +160,10 @@ bindsym $mod+Shift+p mode $power_control
 # Screen control mode 
 set $screen_control "[s]ame as [l]eft of [r]ight of [o]ff"
 mode $screen_control {
-      bindsym s exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --same-as eDP1; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
-      bindsym l exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --left-of eDP1; exec $HOME/.config/polybar/launch.sh; mode "default"
-      bindsym r exec xrandr --output eDP1 --mode 3840x2160 --output HDMI1 --mode 1920x1080 --scale 2x2 --right-of eDP1; exec $HOME/.config/polybar/launch.sh; mode "default"
-      bindsym o exec xrandr --output HDMI1 --off; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
+     bindsym s exec $HOME/.config/i3/screens/same-as.sh; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
+     bindsym l exec $HOME/.config/i3/screens/left-of.sh; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
+     bindsym r exec $HOME/.config/i3/screens/right-of.sh; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
+     bindsym o exec xrandr --output HDMI1 --off; exec $HOME/.config/polybar/launch-edp1.sh; mode "default"
 
      bindsym Return mode "default"
      bindsym Escape mode "default"
@@ -178,7 +178,7 @@ assign[class="Code"] $workspace2
 assign[class="Emacs"] $workspace2
 assign[class="Firefox"] $workspace3
 assign[class="Google-chrome"] $workspace3
-assign[class="Slack"] $workspace4
+assign[class="Franz"] $workspace4
 assign[class="Spotify"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 
@@ -186,7 +186,7 @@ for_window [class="Spotify"] move to workspace $workspace10
 exec $term -e tmux
 exec code
 exec google-chrome
-exec slack
+exec franz 
 exec spotify --force-device-scale-factor=2
 
 # Scratchpad terminal
