@@ -631,4 +631,5 @@
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
     },
+    "javascript.updateImportsOnFileMove.enabled": "never",
 }

@@ -3,6 +3,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/emil/.oh-my-zsh
 
+# zplug
 source "$HOME/.zplug/init.zsh"
 source "$HOME/zplug.zsh"
 
@@ -11,6 +12,16 @@ if ! zplug check; then
 fi
 
 zplug load
+# end zplug
+
+# zplugin
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+
+source "$HOME/zplugin.zsh"
+# end zplugin
+
 
 ZSH_THEME="robbyrussell"
 
@@ -78,3 +89,9 @@ export ANDROID_HOME=$HOME/android-sdk-linux
 export ANDROID_SDK_ROOT=$HOME/android-sdk-linux
 
 eval $(thefuck --alias)
+
+### Added by Zplugin's installer
+source '/home/emil/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk

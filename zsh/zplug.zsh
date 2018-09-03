@@ -8,3 +8,5 @@ zplug "supercrabtree/k"
 zplug "lukechilds/zsh-nvm"
 
 zplug "chrissicool/zsh-256color"
+
+zplug "hlissner/zsh-autopair", defer:2
