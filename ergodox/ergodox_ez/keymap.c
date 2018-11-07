@@ -232,7 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | Left |      |      | Lead | Right|                                       | Up   | Shrug| Flip |      | Down |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
+ *                                        |      |      |       |      |Print |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | Home |       | PgUp |      |      |
  *                                 | Space| Bksp |------|       |------| Tab  |Enter |
@@ -258,7 +258,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_N,     KC_M,    KC_COMM, ALT_T(KC_DOT), CTL_T(KC_SLSH), SFT_T(KC_MINS),
         KC_UP,     M(SHRUG), M(FLIP), _______, KC_DOWN,
 
-        _______, _______,
+        _______, KC_PSCREEN,
         KC_PGDN,
         KC_PGUP, KC_TAB,  KC_ENT
     ),

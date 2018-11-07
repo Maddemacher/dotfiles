@@ -1,11 +1,11 @@
 # Teensy loader instructions
 
-## Ubunutu
+För att bygga det hela
 
-copy 49-teensy.rules to /etc/ude/rules.d/
+`./make.sh`
 
-and run teensy within -teensy
+kör sen `./teensy/teensy` som root
 
-## Windows
+key codes:
 
-run teensy.exe
+- https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes.md
