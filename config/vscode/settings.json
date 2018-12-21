@@ -664,5 +664,8 @@
   "prettier.printWidth": 120,
   "prettier.singleQuote": true,
   "eslint.packageManager": "yarn",
-  "eslint.run": "onSave"
+  "eslint.run": "onSave",
+  "gitlens.views.repositories.enabled": false,
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true
 }

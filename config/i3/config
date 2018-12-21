@@ -240,6 +240,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # bindsym $mod+Print exec scrot -u $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
 # bindsym $mod+Shift+Print exec scrot -s $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
 
-bindsym Print exec gnome-screenshot -a -f $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+Print exec gnome-screenshot -w -f $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+Shift+Print exec gnome-screenshot -f $HOME/Pictures/ScreenShots/latest.png && cp $HOME/Pictures/ScreenShots/latest.png $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec gnome-screenshot -a -f $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Print exec gnome-screenshot -w -f $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+Print exec gnome-screenshot -f $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
