@@ -8,8 +8,10 @@
 #define _______ KC_TRNS
 
 // Layers 
+#define QWERTY TO(_QWERTY)
 #define RAISE TO(_RAISE)
 #define LOWER TO(_LOWER)
+#define GAME TO(_GAME)
 
 // Combo keys
 #define ESC_L1  LT(RAISE, KC_ESC)
@@ -19,6 +21,7 @@
 #define _LOWER 2
 #define _RAISE 3
 #define _SUPERDUPER 4
+#define _GAME 5
 
 // Combo : SuperDuper layer from S+D (R+S in Colemak)
 #define SUPERDUPER_COMBO_COUNT 1
@@ -57,7 +60,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   switch(id) {
     case SHRUG: {
         if (record->event.pressed) {
-		SEND_STRING("¯\\_(ツ)_/¯");
+		    SEND_STRING("¯\\_(ツ)_/¯");
         }
 	
         return false;
@@ -101,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_ergodox(
         // left hand
         SWEDISH,            KC_1,         KC_2,        KC_3,    KC_4,     KC_5, _______,
-        LT(LOWER, KC_BSLS), KC_Q,         KC_W,        KC_E,    KC_R,     KC_T, _______,
+        LT(LOWER, KC_BSLS), KC_Q,         KC_W,        KC_E,    KC_R,     KC_T, GAME,
         ESC_L1,             LGUI_T(KC_A), KC_S,        KC_D,    KC_F,     KC_G,
         KC_LSFT,            CTL_T(KC_Z),  ALT_T(KC_X), KC_C,    KC_V,     KC_B, _______,
         KC_LEFT,            _______,     _______,      KC_LGUI, KC_RIGHT,
@@ -252,6 +255,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
     _______, _______, _______
 ),
+
+/* Keymap 5: Game layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |Swedish |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   =    |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |Tab/L2  |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |   \    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |Esc/L1  |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |Shift   |Z/Ctrl|X/Alt |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |./Alt |/Ctrl | -/Shift|
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | Left |      |      | Lead | Right|                                       | Up   | Shrug| Flip |      | Down |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |Print |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | Home |       | PgUp |      |      |
+ *                                 | Space| Bksp |------|       |------| Tab  |Enter |
+ *                                 |      |      | End  |       |PgDown|      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[_GAME] = LAYOUT_ergodox(
+        // left hand
+        SWEDISH,            KC_1,         KC_2,        KC_3,    KC_4,     KC_5, _______,
+        KC_TAB,             KC_Q,         KC_W,        KC_E,    KC_R,     KC_T, QWERTY,
+        ESC_L1,             KC_A,         KC_S,        KC_D,    KC_F,     KC_G,
+        KC_LSFT,            CTL_T(KC_Z),  ALT_T(KC_X), KC_C,    KC_V,     KC_B, _______,
+        KC_LEFT,            _______,     _______,      KC_LGUI, KC_RIGHT,
+
+                                                                     _______, _______,
+                                                                              KC_HOME,
+                                                          KC_SPC,    KC_BSPC, KC_END,
+
+        // right hand
+        _______, KC_6,     KC_7,    KC_8,    KC_9,          KC_0,            KC_PEQL,
+        _______, KC_Y,     KC_U,    KC_I,    KC_O,          KC_P,            KC_LBRC,
+                 KC_H,     KC_J,    KC_K,    KC_L,          LGUI_T(KC_SCLN), KC_QUOT,
+        _______, KC_N,     KC_M,    KC_COMM, ALT_T(KC_DOT), CTL_T(KC_SLSH),  SFT_T(KC_MINS),
+        KC_UP,   M(SHRUG), M(FLIP), _______, KC_DOWN,
+
+        _______, KC_PSCREEN,
+        KC_PGDN,
+        KC_PGUP, KC_TAB,  KC_ENT
+    ),
 };
 
 // Runs just one time when the keyboard initializes.
@@ -288,6 +336,11 @@ void matrix_scan_user(void) {
             ergodox_right_led_1_on();
             ergodox_right_led_3_on();
             break;
+        case _GAME:
+            // *-*
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
         default:
             // none
             break;
