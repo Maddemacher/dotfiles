@@ -337,10 +337,11 @@ void matrix_scan_user(void) {
             ergodox_right_led_3_on();
             break;
         case _GAME:
-            // *-*
+            // ***
             ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             ergodox_right_led_3_on();
+            break;
         default:
             // none
             break;
