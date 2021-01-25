@@ -1,0 +1,135 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[latin1]{inputenc}
+\usepackage[swedish]{babel}
+
+\usepackage[scale=0.8]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Emil} % Your first name
+\familyname{Bergstr\"om} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+\address{Skrivargatan 31}{17464 Sundbyberg}
+\mobile{(+4676) 817 9964}
+\email{emil.bergstrom1@gmail.com}
+\photo[70pt][0pt]{pictures/picture.png} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makecvtitle
+
+%-----
+% PERSONAL PROPERTIES
+%--------
+
+\section{Personal Properties}
+I am a fast learning and humble person with a big interest for problem solving. Personal development is important for me and I am always interested in learning new things. My studies within mathematics and computer science have given me the tools necessary to analyze and solve programmatically complex problems effectively. My active life style has given me the ability to handle pressure and stress in a constructive way.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2009--2014}{Masters of Applied Computer Science}{M\"alardalens University}{V\"aster\aa s, Sweden}{}{} 
+
+\section{Masters Thesis}
+
+\cvitem{Title}{\emph{The Functional Paradigm in Embedded Real-Time Systems -- A study in the problems and opportunities the functional programming paradigm entails to embedded real-time systems}}
+
+\cvitem{Supervisors}{Professor Bj\"orn Lisper}
+
+\cvitem{Abstract}{This thesis explores the possibility of the functional programming paradigm in the domain of hard embedded real-time systems. The implementation consists of re-implementing an already developed system that is written with the imperative and object oriented paradigms. The functional implementation of the system in question is compared with the original implementation and a study of code complexity, timing properties, CPU utilization and memory usage is performed. The implementation of this thesis consists of re-developing three of the periodic tasks of the original system and the whole development process is facilitated with the TDD development cycle. The programming language used in this thesis is C but with a functional approach to the problem. The conclusions of this thesis is that the functional implementation will give a more stable, reliable and readable system but some code volume, memory usage and CPU utilization overhead is present. The main benefit of using the functional paradigm in this type of system is the ability of using the TDD development cycle. The main con of this type of implementation is that it relies heavily on garbage collection due to the enforcement of data immutability. We find in conclusion that one can only use the functional paradigm if one has an over dimensioned system when it comes to hardware, mainly when it comes to memory size and CPU power. When developing small systems with scarce resources one should choose another paradigm.}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Vocational Experience}
+
+
+\cventry{2013--Present}{Software Engineer}{\textsc{Packsize Technologies AB}}{Enk\"oping}{}{Software Engineer for the development of industrial packaging machines for the lean on-demand manufacturing process and surrounding software. I work within the whole software stack from control system software in C++ and Structured text, to backend work in C\# with a heavy usage of Reactive Extensions and a Mongo DB data store, to an Angular Js and Bootstrap based front end. The whole development process is facilitated by the TDD development cycle. Scrum based development with a multi geographical and cultural team.
+A job that has given me insight and experience in everything from control systems to user interface. }
+
+
+%------------------------------------------------
+\cventry{2012--2013}{Junior Software Engineer}{\textsc{Packsize Technologies AB}}{Enk\"oping}{}{Junior software Engineer for the development of machine service software for industrial packaging machines in the lean on-demand manufacturing process. I also worked on  design software for the packaging templates used within the machines in question. 
+A job that has given me real work experience within my field and allowed me to grow as a developer. }
+
+%------------------------------------------------
+\cventry{2012--2013}{Private tutor}{\textsc{Studiesupport.se}}{V\"aster\aa s}{}{Private tutor in mathematics, physics, chemistry and biology for elementary and high school level students. Extra work on top of my studies. 
+A job that has given me the ability to teach and the flexibility to adapt to different situations.}
+
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Computer skills and Frameworks}
+
+\cvitem{}{C\#, LINQ, AngularJS, Bootstrap, Hard Embedded Real-Time Systems, Windows Workflow Foundation, Rx (Reactive Extensions), Rabbit MQ, Mongo DB, HTML, \LaTeX,  Microsoft Windows, C/C++, Structured Text, Java, Linux, MySQL, CUITe, Windows Forms, WPF, Microsoft Visual Studio, Automation Studio, Team Foundation Server/Service, IntelliJ, Eclipse, Qt Creator, Trello, Git, Clojure, PostgreSQL, Subversion, Ada, Specificity, Moq}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Languages}
+
+\cvitemwithcomment{Swedish}{Mother-tongue}{}
+\cvitemwithcomment{English}{Advanced}{Full professional proficiency}
+\cvitemwithcomment{French}{Basic}{Basic words and phrases only}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Interests}
+
+\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+
+\cvlistdoubleitem{Power Lifting}{Olympic lifting}
+\cvlistdoubleitem{Console Gaming}{Functional programming}
+\cvlistdoubleitem{Nutrition}{Travel}
+
+%\pagebreak
+%%----------------------------------------------------------------------------------------
+%%	COVER LETTER
+%%----------------------------------------------------------------------------------------
+%
+%% To remove the cover letter, comment out this entire block
+%Dear Sir or Madam
+%
+%My name is Emil and I saw on LinkedIn that you are currently searching for a Software Engineer for your eye tracking applications with surrounding GUI.
+%
+%As I am a creative person with a great interest for problem solving, I think that this might be a good position for me. I have a masters degree in Applied Computer Science and I have always had a great interest in learning new things. That is one of the main reasons to why I chose Software Engineering as my profession; you never run out of new things to learn. Personal development is very important for me and I am sure that myGaze can facilitate this need.
+%
+%I am currently employed at a Swedish company as a Software engineer. I started out as a Junior Software Engineer but quickly advanced to a normal Software Engineer. Here I have been working on everything from low level control systems up to an Angular Js based front end. With that in mind, one could say that I am truly full stack. The business layer I am currently working on is a micro service based architecture with Rx (Reactive Extensions) at heart that communicates with its underlying layer via a REST api and the overlying layer through Rabbit MQ.
+%
+%In my free time I enjoy physical activities such as power lifting, Olympic lifting and bouldering. Due to my active lifestyle I have the ability to handle pressure and stress in a constructive manner.
+%
+%With my education, my experience and my lifestyle I believe that I would be a perfect fit for this position.
+%
+%Thank you for taking the time to consider this application and I look forward to hearing from you in the near future.
+%
+%Sincerely yours 
+%Emil Bergström
+%----------------------------------------------------------------------------------------
+
+\end{document}
