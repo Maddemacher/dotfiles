@@ -1,0 +1,59 @@
+{
+	"jest spyon": {
+		"prefix": "spy",
+		"body": [
+			"jest.spyOn($1, '$2').$3"
+		]
+	},
+	"mock resolved value": {
+		"prefix": "mrv",
+		"body": [
+			"mockResolvedValue($1)"
+		]
+	},
+	"mock implementation": {
+		"prefix": "mimpl",
+		"body": [
+			"mockImplementation(() => {})"
+		]
+	},
+	"before each": {
+		"prefix": "befe",
+		"body": [
+			"beforeEach(() => {",
+			"$1",
+			"});"
+		]
+	},
+	"before all": {
+		"prefix": "befa",
+		"body": [
+			"beforeAll(() => {",
+			"$1",
+			"});"
+		]
+	},
+	"after each": {
+		"prefix": "afte",
+		"body": [
+			"afterEach(() => {",
+			"$1",
+			"});"
+		]
+	},
+	"after all": {
+		"prefix": "afta",
+		"body": [
+			"afterAll(() => {",
+			"$1",
+			"});"
+		]
+	},
+	"it should": {
+		"prefix": "should",
+		"body": [
+			"it('Should $1', () => {",
+			"});"
+		]
+	}
+}

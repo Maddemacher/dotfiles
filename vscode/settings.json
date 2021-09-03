@@ -1,0 +1,138 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.autoSave": "onFocusChange",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "search.useIgnoreFiles": false,
+    "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/Users/emil/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+    "java.format.enabled": false,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+        //{"language": "html", "autoFix": true},
+    ],
+    "colorize.languages": [
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "postcss",
+        "sss",
+        "stylus",
+        "xml",
+        "svg",
+        "javascript"
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    // "[html]": {
+    //     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    // },
+    "[jsonc]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-path": "/Users/emil/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vs-kubernetes.minikube-path.mac": "/Users/emil/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vscode-kubernetes.minikube-path.mac": "/Users/emil/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+    },
+    "python.jediEnabled": false,
+    "vim.useSystemClipboard": true,
+    "python.languageServer": "Microsoft",
+    "mssql.connections": [
+        {
+            "server": "combiprod.ad.comhem.com",
+            "database": "EXPORT",
+            "authenticationType": "SqlLogin",
+            "user": "svc_Chat",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true,
+            "profileName": "Combi_Prod"
+        }
+    ],
+    "[sql]": {
+        "editor.defaultFormatter": "ms-mssql.mssql"
+    },
+    "html.format.indentHandlebars": true,
+    "html.format.contentUnformatted": "pre,code,textarea",
+    "window.zoomLevel": 1,
+    "oracledevtools.bookmarkFileFolder": "/Users/emil/Oracle/oracle.oracledevtools",
+    "oracledevtools.connectionConfiguration.configFilesFolder": "/Users/emil/Oracle/network/admin",
+    "oracledevtools.connectionConfiguration.walletFileFolder": "/Users/emil/Oracle/network/admin",
+    "oracledevtools.connections": [
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "EVENT_LOG_SERVICE",
+            "passwordSaved": true,
+            "password": "mXGOhBp8qf0X2RTnsnFB",
+            "dataSource": "futur-prod.db.is.comhem.com:1521/KABPROD",
+            "connectionType": 2,
+            "databaseHostName": "futur-prod.db.is.comhem.com",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "KABPROD",
+            "name": "EVENT_LOG_SERVICE.KABPROD",
+            "currentSchema": "",
+            "tnsAdmin": "/Users/emil/Oracle/network/admin"
+        },
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "CI_INTEGRATIONS_RO",
+            "passwordSaved": true,
+            "password": "ClearIT2020",
+            "dataSource": "192.168.140.25:1521/cidb",
+            "connectionType": 2,
+            "databaseHostName": "192.168.140.25",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "cidb",
+            "name": "CI_INTEGRATIONS_RO.cidb",
+            "currentSchema": "",
+            "tnsAdmin": "/Users/emil/Oracle/network/admin"
+        }
+    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "java.refactor.renameFromFileExplorer": "autoApply",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "editor.cursorStyle": "line",
+    "editor.insertSpaces": false,
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+    "editor.tabSize": 2,
+    "redhat.telemetry.enabled": true,
+}
