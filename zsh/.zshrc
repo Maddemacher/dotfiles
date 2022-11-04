@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/emil/.oh-my-zsh"
+export ZSH="/Users/emil.bergstrom/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,12 +127,12 @@ load-nvmrc
 alias sbash="source ~/.zshrc"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/Users/emil/.gem/ruby/2.3.0/bin:$PATH"
+export PATH="/Users/emil.bergstrom/.gem/ruby/2.3.0/bin:$PATH"
 export PATH=/usr/local/share/python:$PATH
-export PATH=/Users/emil/Library/Android/sdk/emulator:$PATH
-export PATH=/Users/emil/Library/Android/sdk/platform-tools/:$PATH
-export PATH=/Users/emil/Library/Python/2.7/bin/:$PATH
-export PATH=/Users/emil/Library/Python/3.7/bin/:$PATH
+export PATH=/Users/emil.bergstrom/Library/Android/sdk/emulator:$PATH
+export PATH=/Users/emil.bergstrom/Library/Android/sdk/platform-tools/:$PATH
+export PATH=/Users/emil.bergstrom/Library/Python/2.7/bin/:$PATH
+export PATH=/Users/emil.bergstrom/Library/Python/3.7/bin/:$PATH
 
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
@@ -142,7 +142,7 @@ export GEM_PATH=$HOME/.gem
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /Users/emil.bergstrom/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval $(thefuck --alias)
 
@@ -157,10 +157,10 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/emil/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/emil/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/emil.bergstrom/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/emil.bergstrom/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/emil/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/emil/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/emil.bergstrom/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/emil.bergstrom/google-cloud-sdk/completion.zsh.inc'; fi
 
 # sermo
 alias sermo="docker-compose -f docker-compose.yaml -f docker-compose.override.yaml"
